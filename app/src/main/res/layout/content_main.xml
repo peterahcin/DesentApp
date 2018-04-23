@@ -249,7 +249,19 @@
 
     </ScrollView>
 
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bnveEst"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@color/selector_bottom_navigation_blue"
+        app:itemTextColor="@color/selector_bottom_navigation_blue"
+        app:menu="@menu/activity_main_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+    </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+
+    <!--
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -257,6 +269,6 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/activity_main_bottom_navigation" />
+        app:menu="@menu/activity_main_bottom_navigation" />-->
 
 </RelativeLayout>

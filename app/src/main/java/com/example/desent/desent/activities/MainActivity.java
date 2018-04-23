@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Explanatory text that indicates time
     private TextView textViewTimeScale;
 
+    //Tab bar for estimation
+    private BottomNavigationViewEx bnveEst;
+
     //Accelerometer
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -289,14 +292,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        //Bottom navigation
+        //Bottom navigation for Estimation
+        bnveEst = (BottomNavigationViewEx) findViewById(R.id.bnveEst);
+        bnveEst.enableAnimation(false);
+        bnveEst.enableShiftingMode(false);
+        bnveEst.enableItemShiftingMode(false);
+        bnveEst.setIconSize(30,30);
+        bnveEst.setTextSize(14);
+        bnveEst.setIconsMarginTop(5);
 
+        /*
         final BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
+                findViewById(R.id.bottom_navigation);*/
 
         findViewById(R.id.navigation_none).setVisibility(GONE);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(
+        bnveEst.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -332,8 +343,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                             case R.id.navigation_solar_installation:
 
-                                bottomNavigationView.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_blue));
-                                bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_blue));
+                                bnveEst.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_blue));
+                                bnveEst.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_blue));
 
                                 bnveTime.setVisibility(View.GONE);
 
@@ -354,8 +365,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 break;
                             case R.id.navigation_walking:
 
-                                bottomNavigationView.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
-                                bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
+                                bnveEst.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
+                                bnveEst.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
 
                                 bnveTime.setVisibility(View.GONE);
 
@@ -385,8 +396,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 break;
                             case R.id.navigation_cycling:
 
-                                bottomNavigationView.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
-                                bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
+                                bnveEst.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
+                                bnveEst.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
 
                                 bnveTime.setVisibility(View.GONE);
 
@@ -416,8 +427,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 break;
                             case R.id.navigation_electric_car:
 
-                                bottomNavigationView.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
-                                bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
+                                bnveEst.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
+                                bnveEst.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
 
                                 bnveTime.setVisibility(View.GONE);
 
@@ -443,14 +454,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 });
 
-        bottomNavigationView.setOnNavigationItemReselectedListener(
+        bnveEst.setOnNavigationItemReselectedListener(
                 new BottomNavigationView.OnNavigationItemReselectedListener() {
                     @Override
                     public void onNavigationItemReselected(@NonNull MenuItem item) {
                         findViewById(R.id.navigation_none).performClick();
                     }
                 });
-
 
         init();
 

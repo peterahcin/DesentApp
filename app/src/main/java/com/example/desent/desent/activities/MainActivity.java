@@ -53,6 +53,7 @@ import com.example.desent.desent.models.Indicator;
 import com.example.desent.desent.models.Transportation;
 import com.example.desent.desent.models.VehicleCost;
 import com.example.desent.desent.utils.EstimationType;
+import com.example.desent.desent.utils.SessionManagement;
 import com.example.desent.desent.utils.TimeScale;
 import com.example.desent.desent.utils.Utility;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -61,6 +62,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import android.os.Handler;
+import android.widget.Toast;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -68,6 +70,9 @@ import static android.view.View.VISIBLE;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //Spinner timeSpinner;
+
+    //SessionManager to remember user at login
+    private SessionManagement sessionManagement;
 
     //Tab bar for time
     private BottomNavigationViewEx bnveTime;
@@ -211,6 +216,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sessionManagement = new SessionManagement(getApplicationContext());
+        Toast.makeText(getApplicationContext(), "User login status: " + sessionManagement.isLoggedIn(), Toast.LENGTH_LONG).show();
+        sessionManagement.checkLogin();
 
         //Accelerometer
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -614,6 +623,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         drawer.closeDrawers();
 
                         return true;
+
+                    case R.id.nav_log_out:
+
+                        sessionManagement.logoutUser();
+                        drawer.closeDrawers();
+                        return true;
+
                     default:
 
                 }

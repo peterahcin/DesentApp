@@ -31,9 +31,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.desent.desent.R;
 import com.example.desent.desent.utils.AESHelper;
+import com.example.desent.desent.utils.SessionManagement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,10 +72,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private SharedPreferences sharedPreferences;
     private final static String CIPHER_KEY = "p2m8j0DgoqjJGxnDYfq70fV92h7sCg0N";
 
+    private SessionManagement sessionManagement;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sessionManagement = new SessionManagement(getApplicationContext());
+        Toast.makeText(getApplicationContext(), "User login status: " + sessionManagement.isLoggedIn(), Toast.LENGTH_LONG).show();
+        if (sessionManagement.isLoggedIn()){
+            finish();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            return;
+        }
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -225,6 +238,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
+            sessionManagement.createLoginSession(email);
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             /**showProgress(true);
             mAuthTask = new UserLoginTask(email, password);

@@ -68,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // COL's for TABLE_NAME
     // public static final String UI_COL_1 = "ID";
     public static final String UI_COL_2 = "NAME";
-    public static final String UI_COL_3 = "SURNAME";
+    public static final String UI_COL_3 = "EMAIL";
     public static final String UI_COL_4 = "WEIGHT";
     public static final String UI_COL_5 = "CAR_MAKE";
     public static final String UI_COL_6 = "YEARLY_ELECTRICITY_CONSUMPTION";
@@ -162,12 +162,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String name, String surname, String weight, String carMake, String elCons) {
+    public boolean insertData(String name, String email, String weight, String carMake, String elCons) {
         SQLiteDatabase db = this.getWritableDatabase();
         if (checkIfEmpty(db, TABLE_NAME)) {
             ContentValues contentValues = new ContentValues();
             contentValues.put(UI_COL_2, name);
-            contentValues.put(UI_COL_3, surname);
+            contentValues.put(UI_COL_3, email);
             contentValues.put(UI_COL_4, weight);
             contentValues.put(UI_COL_5, carMake);
             contentValues.put(UI_COL_6, elCons);
@@ -870,11 +870,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean updateData(String name, String surname, String weight, String carMake, String elCons) {
+    public boolean updateData(String name, String email, String weight, String carMake, String elCons) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(UI_COL_2, name);
-        contentValues.put(UI_COL_3, surname);
+        contentValues.put(UI_COL_3, email);
         contentValues.put(UI_COL_4, weight);
         contentValues.put(UI_COL_5, carMake);
         contentValues.put(UI_COL_6, elCons);
@@ -1087,4 +1087,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    //method to be used in SessionManagement to retrieve email of user that has logged out
+    public String getUserEmail() {
+        String email;
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (checkIfEmpty(db, TABLE_NAME)){
+            email = null;
+        } else {
+            Cursor cursor = db.rawQuery("select " + UI_COL_3 + " from " + TABLE_NAME, null);
+            cursor.moveToFirst();
+            email = cursor.getString(0);
+            cursor.close();
+        }
+        return email;
+    }
+
+    public boolean setUserEmail(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        if (checkIfEmpty(db, TABLE_NAME)){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(UI_COL_3, email);
+            Log.i(LOG, "Email: " + email);
+            Log.i(LOG, "Insert data ok, put values");
+            long result = db.insert(TABLE_NAME, null, contentValues);
+            if (result == -1){
+                return false;
+            } else {
+                Log.i(LOG, "True returned");
+            }
+            return true;
+        } else {
+            //The table is not empty and it is not possible to insert a new row
+            return false;
+        }
+    }
 }

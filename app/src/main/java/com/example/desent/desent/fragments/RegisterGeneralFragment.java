@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.desent.desent.R;
+import com.example.desent.desent.models.DatabaseHelper;
 import com.example.desent.desent.utils.AESHelper;
 import com.example.desent.desent.utils.Utility;
 import com.soundcloud.android.crop.Crop;
@@ -50,6 +51,7 @@ public class RegisterGeneralFragment extends Fragment {
     private EditText confirmPasswordTextView;
     private SharedPreferences sharedPreferences;
     private Uri imageUri;
+    private DatabaseHelper myDB;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +61,8 @@ public class RegisterGeneralFragment extends Fragment {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_register_general, container, false);
+
+        myDB = new DatabaseHelper(getContext());
 
         profilePic = rootView.findViewById(R.id.profile_pic);
         nameTextView = rootView.findViewById(R.id.name);
@@ -97,9 +101,8 @@ public class RegisterGeneralFragment extends Fragment {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
+        myDB.setUserEmail(String.valueOf(emailTextView.getText()));
         editor.commit();
-
     }
 
     @Override

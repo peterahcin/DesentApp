@@ -1,7 +1,9 @@
 package com.example.desent.desent.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +22,8 @@ import com.example.desent.desent.fragments.RegisterActivityFragment;
 import com.example.desent.desent.fragments.RegisterGeneralFragment;
 import com.example.desent.desent.fragments.RegisterHousingFragment;
 import com.example.desent.desent.fragments.RegisterTransportationFragment;
+import com.example.desent.desent.models.DatabaseHelper;
+import com.example.desent.desent.utils.SessionManagement;
 
 import java.util.List;
 import java.util.Vector;
@@ -45,14 +49,26 @@ public class RegisterActivity extends FragmentActivity {
     /**
      * The pager adapter, which provides the pages to the view pager widget.
      */
-
     private LinearLayout dotsLayout;
     private Button btnPrev, btnNext;
     private PagerAdapter mPagerAdapter;
+
+    /**
+     * Session management added to remember user on login
+     */
+    private SessionManagement sessionManagement;
+    private SharedPreferences sharedPreferences;
+    private DatabaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        //to manage login session
+        sessionManagement = new SessionManagement(getApplicationContext());
+        databaseHelper = new DatabaseHelper(getApplicationContext());
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         List fragments = new Vector();
         fragments.add(Fragment.instantiate(this,RegisterGeneralFragment.class.getName()));
@@ -103,6 +119,7 @@ public class RegisterActivity extends FragmentActivity {
     }
 
     private void launchHomeScreen() {
+        sessionManagement.createLoginSession(sharedPreferences.getString("pref_key_personal_email", null));
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
         finish();
     }

@@ -334,4 +334,8 @@
     <string name="main_avg_this_week">Average this week</string>
     <string name="main_save_per_day">You will save: (per day)</string>
 
+    <!--History Activity-->
+    <string name="value_graph">value</string>
+    <string name="explanation_graph">Scroll horizontally to view historical data</string>
+
 </resources>

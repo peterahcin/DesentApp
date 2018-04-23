@@ -34,8 +34,6 @@ public class Yaxis extends View {
 
     public Yaxis(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
-
-
         //mView = findViewById(R.id.y_axis);
     }
 
@@ -44,10 +42,7 @@ public class Yaxis extends View {
         this.canvas = canvas;
         paint.setColor(Color.BLACK);
         paint.setTextSize(40f);
-
-
         drawYaxis();
-
     }
 
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -60,7 +55,6 @@ public class Yaxis extends View {
 
     public void setBorder(int border){
         this.border = border;
-
     }
 
     public void setFirstValueSet(List<ChartData> value){
@@ -70,7 +64,6 @@ public class Yaxis extends View {
     }
 
     public void drawYaxis(){
-
         int graphheight = (parentHeight-60) - (3*border);
         int size = firstRow.length;
         int label_size = size -1;
@@ -91,9 +84,6 @@ public class Yaxis extends View {
         }
         ver_height = ((graphheight / label_size) * label_size) + border;
         canvas.drawLine(parentWidth-1, 0 , parentWidth-1, ver_height, paint);
-
-
-
     }
 
     public float getMaxY_Values(List<ChartData> values) {
@@ -111,6 +101,4 @@ public class Yaxis extends View {
         }
         return largest1;
     }
-
-
 }

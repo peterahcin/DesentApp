@@ -22,14 +22,12 @@ public class StackedBarLabel extends View {
     private Canvas canvas;
     private int parentWidth, parentHeight;
     private float left, top, right, bottom;
-    private float textHeight = 40;
+    private float textHeight = 38;
     private List<String> colorLabels = new ArrayList<>();
     private List<String> labels = new ArrayList<>();
 
     public StackedBarLabel(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
-
-
     }
 
     public void clear(){
@@ -45,17 +43,13 @@ public class StackedBarLabel extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-
     protected void onDraw(Canvas canvas) {
         Log.i(LOGG, "onDraw");
         initializeValue(canvas);
         drawColorLabels();
-
     }
 
     private void initializeValue(Canvas canvas){
-
-
         this.canvas = canvas;
     }
 
@@ -79,7 +73,6 @@ public class StackedBarLabel extends View {
             int yFromEdge = yBetween/2;
 
             int boxDim;
-
 
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.FILL);

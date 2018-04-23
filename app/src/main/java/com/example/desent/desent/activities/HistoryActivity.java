@@ -9,7 +9,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -30,10 +32,12 @@ import com.example.desent.desent.models.Energy;
 import com.example.desent.desent.models.Transportation;
 import com.example.desent.desent.utils.ChartData;
 import com.example.desent.desent.utils.GraphPoints;
+import com.example.desent.desent.utils.SessionManagement;
 import com.example.desent.desent.utils.Utility;
 import com.example.desent.desent.views.StackBarChart;
 import com.example.desent.desent.views.StackedBarLabel;
 import com.example.desent.desent.views.Yaxis;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.jjoe64.graphview.series.DataPoint;
 
 import java.io.FileNotFoundException;
@@ -48,7 +52,13 @@ import java.util.List;
 public class HistoryActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawer;
-    Spinner spinner;
+
+    //Tab bar for choosing history graph type
+    BottomNavigationViewEx bnveHistory;
+
+    //Label for the graphs
+    TextView histAnnotation;
+
     final static String LOGG = "HistoryPage";
     DatabaseHelper myDb;
     Energy energy;
@@ -73,25 +83,61 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
 
         setUpNavigationView();
 
-        spinner = (Spinner) findViewById(R.id.history_spinner);
+        /*spinner = (Spinner) findViewById(R.id.history_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.history_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(adapter);*/
 
         myDb = new DatabaseHelper(this);
         myDb.getWeekDrivingDistance();
 
+        histAnnotation = (TextView) findViewById(R.id.hist_annotation);
+        histAnnotation.setText(getResources().getString(R.string.carbon_footprint_unit));
+
         stackBarChart = (StackBarChart) findViewById(R.id.chart);
         labelOrganizer = (StackedBarLabel) findViewById(R.id.labelStackedBar);
         yaxis = (Yaxis) findViewById(R.id.y_axis);
-        //displayDistanceGraph();
-    }
 
+        bnveHistory = (BottomNavigationViewEx) findViewById(R.id.navHistorySort);
+        bnveHistory.setSelectedItemId(R.id.hist_cf);
+        bnveHistory.enableAnimation(true);
+        bnveHistory.enableShiftingMode(false);
+        bnveHistory.enableItemShiftingMode(false);
+        bnveHistory.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(), R.color.selector_time_navigation_white_grey));
+        bnveHistory.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_time_navigation_white_grey));
+        bnveHistory.setTextSize(12);
+
+        bnveHistory.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.hist_cf:
+                        displayCarbonFootprintGraph();
+                        break;
+
+                    case R.id.hist_transportation:
+                        displayDistanceGraph();
+                        break;
+
+                    case R.id.hist_energy:
+                        displayEnergyConsumptionGraph();
+                        break;
+
+                }
+                stackBarChart.invalidate();
+                labelOrganizer.invalidate();
+                yaxis.invalidate();
+                return true;
+            }
+        });
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        spinner.setSelection(0);
+        //spinner.setSelection(0);
+        //bnveHistory.setSelectedItemId(R.id.hist_cf);
 
         AsyncHistorySetup asyncHistorySetup = new AsyncHistorySetup(this,
                 stackBarChart,
@@ -117,12 +163,15 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
             drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_about_us) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (id == R.id.nav_log_out){
+            SessionManagement session = new SessionManagement(getApplicationContext());
+            session.logoutUser();
+            drawer.closeDrawers();
         }
-
         return true;
     }
 
-    public void initSpinner(){
+    /*public void initSpinner(){
         spinner.setOnItemSelectedListener(spinnerHandler);
     }
 
@@ -151,7 +200,7 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
         public void onNothingSelected(AdapterView<?> parent) {
         }
 
-    };
+    };*/
 
     protected void setUpNavigationView(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -194,6 +243,8 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
 
     public void displayCarbonFootprintGraph() {
 
+        histAnnotation.setText(getResources().getString(R.string.carbon_footprint_unit));
+
         List<ChartData> value = new ArrayList<>();
 
         float[] carbonFootprintTransportation = transportation.getWeekCarbonFootprint();
@@ -201,7 +252,37 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
 
         Float[] value1 = new Float[7];
         Float[] value2 = new Float[7];
+
+        //remove to get app to work properly
+        /*
+        value2[0] = (float) 1.4;
+        value1[0] = (float) 0.8;
+
+        value2[1] = (float) 1.4;
+        value1[1] = (float) 0.7;
+
+        value2[2] = (float) 4.5;
+        value1[2] = (float) 0.8;
+
+        value2[3] = (float) 4.5;
+        value1[3] = (float) 0.7;
+
+        value2[4] = (float) 3.1;
+        value1[4] = (float) 1.2;
+
+        value2[5] = (float) 3.1;
+        value1[5] = (float) 1.2;
+
+        value2[6] = (float) 3.5;
+        value1[6] = (float) 0.9;
+        */
+
+        //remove comment to get app to work properly
         for (int i=0; i<7; i++) {
+            //to visualize when no values in db
+            /*value1[i] = (float) i + (float) 1;
+            value2[i] = (float) i + (float) 1;*/
+
             value1[i] = carbonFootprintEnergy[i];
             value2[i] = carbonFootprintTransportation[i];
         }
@@ -209,9 +290,8 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
         String barColor1 = "#03a9f4";
         String barColor2 = "#64dd17";
 
-        String labelText1 = "Energy";
-        String labelText2 = "Transportation"; //TODO: string
-
+        String labelText1 = "From energy";
+        String labelText2 = "From transportation"; //TODO: string
 
         value.add(new ChartData(value1, labelText1, barColor1));
         value.add(new ChartData(value2, labelText2, barColor2));
@@ -244,16 +324,33 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
 
     public void displayEnergyConsumptionGraph() {
 
+        histAnnotation.setText("kWh");
+
         List<ChartData> value = new ArrayList<>();
 
         float[] weekEnergyConsumption = energy.generateArrayWeekEnergyConsumption();
         Float[] value1 = new Float[7];
+
+        //remove to get app to walk properly
+        /*
+        value1[0] = (float) 4.9;
+        value1[1] = (float) 6.0;
+        value1[2] = (float) 5.2;
+        value1[3] = (float) 8.8;
+        value1[4] = (float) 8.2;
+        value1[5] = (float) 6.6;
+        value1[6] = (float) 5.5;
+        */
+
+        //remove comment to work properly
         for (int i=0; i<7; i++)
             value1[i] = weekEnergyConsumption[i];
+            //added to visualize graph with no values in db
+            //value1[i] = (float) i + (float) + 1;
 
-        String barColor1 = "#FF53BCD6";
+        String barColor1 = "#03a9f4";
 
-        String labelText1 = "Energy consumption (kWh)";
+        String labelText1 = "Energy consumption";
 
 
         value.add(new ChartData(value1, labelText1, barColor1));
@@ -279,10 +376,11 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
         yaxis = (Yaxis) findViewById(R.id.y_axis);
         yaxis.setBorder(60);
         yaxis.setFirstValueSet(value);
-
     }
 
     public void displayDistanceGraph() {
+
+        histAnnotation.setText("km");
 
         List<ChartData> value = new ArrayList<>();
 
@@ -294,20 +392,57 @@ public class HistoryActivity extends AppCompatActivity implements NavigationView
         Float[] value2 = new Float[7];
         Float[] value3 = new Float[7];
 
+        /*
+        value1[0] = (float) 3;
+        value2[0] = (float) 4;
+        value3[0] = (float) 28.3;
+
+        value1[1] = (float) 4;
+        value2[1] = (float) 0;
+        value3[1] = (float) 34.5;
+
+        value1[2] = (float) 2;
+        value2[2] = (float) 5;
+        value3[2] = (float) 34.1;
+
+        value1[3] = (float) 2;
+        value2[3] = (float) 0;
+        value3[3] = (float) 23.1;
+
+        value1[4] = (float) 3;
+        value2[4] = (float) 6;
+        value3[4] = (float) 23.6;
+
+        value1[5] = (float) 8;
+        value2[5] = (float) 2;
+        value3[5] = (float) 26.8;
+
+        value1[6] = (float) 2;
+        value2[6] = (float) 0;
+        value3[6] = (float) 30.4;
+        */
+
+        //remove comment to work properly
         for (int i=0; i<7; i++) {
+            /* to see how graph look likes
+            value1[i] = (float) i + (float) 1.0;
+            value2[i] = (float) i + (float) 1.0;
+            value3[i] = (float) i + (float) 1.0;
+            */
+
+            //retrieves actual historical data
             value1[i] = walkingDistance[i];
             value2[i] = cyclingDistance[i];
             value3[i] = drivingDistance[i];
         }
 
         String barColor1 = "#00ff00";
-        String barColor2 = "#4f8714";
-        String barColor3 = "#875c14";
+        String barColor2 = "#00cc00";
+        String barColor3 = "#009900";
 
-        String labelText1 = "Walking";
-        String labelText2 = "Cycling";
-        String labelText3 = "Driving";
-
+        String labelText1 = "Distance walked";
+        String labelText2 = "Distance cycled";
+        String labelText3 = "Distance driven";
 
         value.add(new ChartData(value1, labelText1, barColor1));
         value.add(new ChartData(value2, labelText2, barColor2));

@@ -8,8 +8,21 @@
     tools:context="com.example.desent.desent.activities.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/navTime"
+        app:elevation="0dp"
+        android:background="?attr/colorPrimary"
+        app:itemTextColor="@color/selector_time_navigation_white_grey"
+        app:itemIconTint="@color/selector_time_navigation_white_grey"
+        app:menu="@menu/activity_main_time_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+
     <fragment
         android:name="com.example.desent.desent.fragments.IndicatorsBarFragment"
+        android:layout_below="@+id/navTime"
         android:layout_height="48dp"
         android:layout_width="match_parent"
         android:id="@+id/indicators_bar"
@@ -46,6 +59,17 @@
             android:orientation="vertical"
             android:padding="10dp"
             android:gravity="center">
+
+            <TextView
+                android:id="@+id/textViewTimeScale"
+                android:visibility="invisible"
+                android:text="@string/main_avg_this_week"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <fragment android:name="com.example.desent.desent.fragments.WalkingDistanceFragment"
                 android:id="@+id/walking_distance"

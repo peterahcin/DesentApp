@@ -54,6 +54,7 @@ import com.example.desent.desent.models.VehicleCost;
 import com.example.desent.desent.utils.EstimationType;
 import com.example.desent.desent.utils.TimeScale;
 import com.example.desent.desent.utils.Utility;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -65,7 +66,12 @@ import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    Spinner timeSpinner;
+    //Spinner timeSpinner;
+
+    //Tab bar for time
+    BottomNavigationViewEx bnveTime;
+    //Explanatory text that indicates time
+    TextView textViewTimeScale;
 
     //Accelerometer
     private SensorManager mSensorManager;
@@ -182,7 +188,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        timeSpinner.setSelection(0);
+        bnveTime.setSelectedItemId(R.id.time_today);
+        //timeSpinner.setSelection(0);
     }
 
     @Override
@@ -211,10 +218,66 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         //Spinners
+        /*
         timeSpinner = (Spinner) findViewById(R.id.time_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.time_spinner_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        timeSpinner.setAdapter(adapter);
+        timeSpinner.setAdapter(adapter);*/
+
+        textViewTimeScale = (TextView) findViewById(R.id.textViewTimeScale);
+
+        bnveTime = (BottomNavigationViewEx) findViewById(R.id.navTime);
+        bnveTime.setSelectedItemId(R.id.time_today);
+        bnveTime.enableAnimation(true);
+        bnveTime.enableShiftingMode(false);
+        bnveTime.enableItemShiftingMode(false);
+        bnveTime.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(), R.color.selector_time_navigation_white_grey));
+        bnveTime.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_time_navigation_white_grey));
+        bnveTime.setIconSize(25,25);
+        bnveTime.setTextSize(14);
+        bnveTime.setIconsMarginTop(20);
+
+        bnveTime.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.time_today:
+                        bnveTime.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(), R.color.selector_time_navigation_white_grey));
+                        bnveTime.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_time_navigation_white_grey));
+
+                        if (carbonFootprint.getEstimationType() == EstimationType.NONE)
+                            informationCO2Left.setVisibility(VISIBLE);
+                        textViewTimeScale.setVisibility(View.GONE);
+                        for (Indicator indicator: indicators)
+                            indicator.setTimeScale(TimeScale.TODAY);
+                        break;
+
+                    case R.id.time_week:
+                        bnveTime.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_time_navigation_white_grey));
+                        bnveTime.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_time_navigation_white_grey));
+
+                        informationCO2Left.setVisibility(GONE);
+                        textViewTimeScale.setVisibility(View.VISIBLE);
+                        textViewTimeScale.setText("Average this week");
+                        for (Indicator indicator: indicators)
+                            indicator.setTimeScale(TimeScale.WEEK);
+                        break;
+
+                    case R.id.time_month:
+                        bnveTime.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_time_navigation_white_grey));
+                        bnveTime.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_time_navigation_white_grey));
+
+                        informationCO2Left.setVisibility(GONE);
+                        textViewTimeScale.setVisibility(View.VISIBLE);
+                        textViewTimeScale.setText("Average this month");
+                        for (Indicator indicator: indicators)
+                            indicator.setTimeScale(TimeScale.MONTH);
+                }
+                refreshAll();
+
+                return true;
+            }
+        });
 
         //Bottom navigation
 
@@ -235,10 +298,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                             case R.id.navigation_none:
 
+                                bnveTime.setVisibility(View.VISIBLE);
+
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.NONE);
 
-                                if (timeSpinner.getSelectedItemPosition() == 0)
+                                //if (timeSpinner.getSelectedItemPosition() == 0)
+                                if (bnveTime.getCurrentItem() == R.id.time_today)
                                     informationCO2Left.setVisibility(View.VISIBLE);
 
                                 informationSavings.setVisibility(View.GONE);
@@ -259,6 +325,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 bottomNavigationView.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_blue));
                                 bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_blue));
 
+                                bnveTime.setVisibility(View.GONE);
+
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.SOLAR_INSTALLATION);
 
@@ -278,6 +346,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                                 bottomNavigationView.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
                                 bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
+
+                                bnveTime.setVisibility(View.GONE);
 
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.WALKING);
@@ -308,6 +378,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 bottomNavigationView.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
                                 bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
 
+                                bnveTime.setVisibility(View.GONE);
+
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.CYCLING);
 
@@ -336,6 +408,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                                 bottomNavigationView.setItemTextColor(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
                                 bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
+
+                                bnveTime.setVisibility(View.GONE);
 
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.ELECTRIC_CAR);
@@ -628,9 +702,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /*
     public void initTimeSpinner(){
         timeSpinner.setOnItemSelectedListener(timeSpinnerHandler);
-    }
+    }*/
 
     protected void init() {
 

@@ -324,5 +324,8 @@
     <string name="error_password_not_match">The passwords do not match</string>
     <string name="error_invalid_price">The price must be a number</string>
 
+    <!-- Main/Estimation Activity-->
+    <string name="main_avg_this_week">Average this week</string>
+    <string name="main_save_per_day">You will save: (per day)</string>
 
 </resources>

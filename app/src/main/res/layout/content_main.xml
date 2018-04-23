@@ -60,6 +60,27 @@
             android:padding="10dp"
             android:gravity="center">
 
+            <LinearLayout
+                android:id="@+id/information_co2_left"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/progress_bar"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/text_view_information_co2_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    android:textColor="@color/dark_grey"
+                    android:textStyle="bold"
+                    android:text="@string/information_co2_left_default2"/>
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/textViewTimeScale"
                 android:visibility="invisible"
@@ -117,6 +138,7 @@
 
             </LinearLayout>
 
+            <!--
             <LinearLayout
                 android:id="@+id/information_co2_left"
                 android:layout_marginTop="10dp"
@@ -134,7 +156,7 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold"
                     android:text="@string/information_co2_left_default"/>
-            </LinearLayout>
+            </LinearLayout>-->
 
             <View
                 android:id="@+id/separator_information"

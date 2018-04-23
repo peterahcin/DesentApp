@@ -202,6 +202,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         bnveTime.setSelectedItemId(R.id.time_today);
+        bnveEst.setSelectedItemId(R.id.navigation_none);
+        informationCO2Left.setVisibility(View.VISIBLE);
         //timeSpinner.setSelection(0);
     }
 
@@ -260,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                         if (carbonFootprint.getEstimationType() == EstimationType.NONE)
                             informationCO2Left.setVisibility(VISIBLE);
-                        textViewTimeScale.setVisibility(View.GONE);
+                            textViewTimeScale.setVisibility(View.GONE);
                         for (Indicator indicator: indicators)
                             indicator.setTimeScale(TimeScale.TODAY);
                         break;
@@ -347,6 +349,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 bnveEst.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_blue));
 
                                 bnveTime.setVisibility(View.GONE);
+                                textViewTimeScale.setVisibility(View.GONE);
 
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.SOLAR_INSTALLATION);
@@ -369,6 +372,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 bnveEst.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
 
                                 bnveTime.setVisibility(View.GONE);
+                                textViewTimeScale.setVisibility(View.GONE);
 
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.WALKING);
@@ -400,6 +404,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 bnveEst.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
 
                                 bnveTime.setVisibility(View.GONE);
+                                textViewTimeScale.setVisibility(View.GONE);
 
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.CYCLING);
@@ -431,6 +436,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 bnveEst.setItemIconTintList(ContextCompat.getColorStateList(getApplicationContext(),R.color.selector_bottom_navigation_green));
 
                                 bnveTime.setVisibility(View.GONE);
+                                textViewTimeScale.setVisibility(View.GONE);
 
                                 for (Indicator indicator:indicators)
                                     indicator.setEstimationType(EstimationType.ELECTRIC_CAR);
@@ -579,29 +585,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 switch (menuItem.getItemId()) {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.nav_home:
-
-
-                        // launch new intent instead of loading fragment
-                        /*
-                        startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
-                         */
+                        bnveTime.setSelectedItemId(R.id.time_today);
+                        bnveEst.setSelectedItemId(R.id.navigation_none);
+                        informationCO2Left.setVisibility(View.VISIBLE);
+                        //startActivity(new Intent(MainActivity.this, MainActivity.class));
                         drawer.closeDrawers();
-
                         return true;
+
                     case R.id.nav_history:
 
-
-                        // launch new intent instead of loading fragment
                         startActivity(new Intent(MainActivity.this, HistoryActivity.class));
                         drawer.closeDrawers();
                         return true;
+
                     case R.id.nav_settings:
 
-
-                        // launch new intent instead of loading fragment
                         startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                         drawer.closeDrawers();
                         return true;
+
                     case R.id.nav_about_us:
 
 

@@ -49,7 +49,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/body"
-        android:layout_above="@+id/bottom_navigation"
+        android:layout_above="@+id/bnveEst"
         android:layout_below="@+id/indicators_bar"
         android:fillViewport="true">
 
@@ -112,8 +112,8 @@
 
             <fragment android:name="com.example.desent.desent.fragments.CircleFragment"
                 android:id="@+id/dailyCarbonFootprint"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
                 tools:layout="@layout/fragment_circle">
             </fragment>
 

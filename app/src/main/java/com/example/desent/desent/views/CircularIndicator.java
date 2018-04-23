@@ -29,9 +29,8 @@ public class CircularIndicator extends View {
     protected RectF mCircleBounds;
 
     //Sizes
-    protected int mBackgroundThicknessFactor = 30;
-    protected int mProgressThicknessFactor = 25;
-
+    protected int mBackgroundThicknessFactor = 20;
+    protected int mProgressThicknessFactor = 15;
 
     //Angles
     protected int startAngle;
@@ -91,7 +90,7 @@ public class CircularIndicator extends View {
 
     public void updateTotalValue(){
         totalValue = 0;
-        for (int i=0; i<values.length; i++){
+        for (int i=0; i < values.length; i++){
             totalValue = totalValue + values[i];
         }
     }
@@ -122,15 +121,14 @@ public class CircularIndicator extends View {
         //Bounds
         int x = this.getWidth();
         int y = this.getHeight();
-        int r = (x<y) ? x : y;
+        int r = (x < y) ? x : y;
 
         int backgroundThickness = r/mBackgroundThicknessFactor;
         int progressThickness = r/mProgressThicknessFactor;
 
-        mCircleBounds = new RectF((x-r)/2 + progressThickness, (y-r)/2 + progressThickness, (x+r)/2 - progressThickness, (y+r)/2-progressThickness);
+        mCircleBounds = new RectF((x - r)/2 + progressThickness, (y - r)/2 + progressThickness, (x+r)/2 - progressThickness, (y+r)/2-progressThickness);
 
         //Paints
-
         mBackgroundPaint.setColor(mLightGrey);
         mBackgroundPaint.setAntiAlias(true);
         mBackgroundPaint.setStyle(Style.STROKE);
@@ -155,12 +153,9 @@ public class CircularIndicator extends View {
         int x = getMeasuredWidth();
         int y = getMeasuredHeight();
 
-        int r = (x<y) ? x : y;
+        int r = (x < y) ? x : y;
         setMeasuredDimension(r,r);
-
-
     }
-
 
     @Override
     protected void onDraw(Canvas canvas) {

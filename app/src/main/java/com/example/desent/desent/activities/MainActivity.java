@@ -39,6 +39,7 @@ import com.example.desent.desent.fragments.CyclingDistanceFragment;
 import com.example.desent.desent.fragments.IndicatorsBarFragment;
 import com.example.desent.desent.fragments.SolarPanelSizeFragment;
 import com.example.desent.desent.fragments.WalkingDistanceFragment;
+import com.example.desent.desent.models.ActiveMinutes;
 import com.example.desent.desent.models.Calories;
 import com.example.desent.desent.models.CarbonFootprint;
 import com.example.desent.desent.models.DatabaseHelper;
@@ -69,9 +70,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Spinner timeSpinner;
 
     //Tab bar for time
-    BottomNavigationViewEx bnveTime;
+    private BottomNavigationViewEx bnveTime;
     //Explanatory text that indicates time
-    TextView textViewTimeScale;
+    private TextView textViewTimeScale;
 
     //Accelerometer
     private SensorManager mSensorManager;
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Indicators
     protected ArrayList<Indicator> indicators = new ArrayList<>();
     protected Calories calories;
+    protected ActiveMinutes activeMinutes;
     protected Expenses expenses;
     protected CarbonFootprint carbonFootprint;
     protected DrivingDistance drivingDistance;
@@ -147,6 +149,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void setCalories(Calories calories) {
         this.calories = calories;
+    }
+
+    public ActiveMinutes getActiveMinutes() {
+        return activeMinutes;
+    }
+
+    public void setActiveMinutes(ActiveMinutes activeMinutes){
+        this.activeMinutes = activeMinutes;
     }
 
     public Expenses getExpenses() {

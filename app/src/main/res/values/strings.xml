@@ -372,4 +372,13 @@
         <item>not sure</item>
     </string-array>
 
+    <!--  Terms and condition -->
+    <string name="t_c_header">Terms and Conditions</string>
+    <string name="t_c_1">The app will use the GPS on your device to track how you move, but before the data are stored, it will be anonymized and it should not be possible to track you personally with the app stored by the app.</string>
+    <string name="t_c_2">By clicking \'I AGREE\' below, you allow this app to store;</string>
+    <string name="t_c_3">- information about you that you explicit gave during registration,</string>
+    <string name="t_c_4">- GPS data generated from using the app,</string>
+    <string name="t_c_5">and allow secondary use of the information to e.g., city planning, mapping of citizens\' transportation habits.</string>
+    <string name="t_c_6">Since the main functionality of the app is to calculate your emissions through transportation, agreeing to these terms and conditions is necessary for the app to work optimally.</string>
+    <string name="t_c_7">I AGREE</string>
 </resources>

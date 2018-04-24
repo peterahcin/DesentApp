@@ -114,11 +114,6 @@ public class RegisterTransportationFragment extends Fragment {
             } else {
                 car_nr_2_info.setVisibility(View.GONE);
             }
-            /*regNrTextView2.setEnabled(b);
-            carSizeSpinner2.setEnabled(b);
-            priceTextView2.setEnabled(b);
-            drivingDistanceTextView2.setEnabled(b);
-            ownershipPeriodTextView2.setEnabled(b);*/
         }
     }
 

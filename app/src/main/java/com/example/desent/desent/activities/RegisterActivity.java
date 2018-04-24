@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.desent.desent.R;
 import com.example.desent.desent.fragments.RegisterActivityFragment;
+import com.example.desent.desent.fragments.RegisterConsentFragment;
 import com.example.desent.desent.fragments.RegisterGeneralFragment;
 import com.example.desent.desent.fragments.RegisterHousingFragment;
 import com.example.desent.desent.fragments.RegisterPersonalFragment;
@@ -75,6 +76,7 @@ public class RegisterActivity extends FragmentActivity {
         fragments.add(Fragment.instantiate(this, RegisterTransportationHabitsFragment.class.getName()));
         fragments.add(Fragment.instantiate(this, RegisterTransportationFragment.class.getName()));
         //fragments.add(Fragment.instantiate(this, RegisterActivityFragment.class.getName()));
+        fragments.add(Fragment.instantiate(this, RegisterConsentFragment.class.getName()));
         this.mPagerAdapter = new MyPagerAdapter(super.getSupportFragmentManager(), fragments);
 
         // Instantiate a ViewPager and a PagerAdapter.

@@ -9,7 +9,6 @@
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_history_black_24dp"
             android:title="@string/nav_history" />
-
         <item
             android:id="@+id/nav_settings"
             android:title="@string/nav_settings"

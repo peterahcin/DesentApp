@@ -338,4 +338,8 @@
     <string name="value_graph">value</string>
     <string name="explanation_graph">Scroll horizontally to view historical data</string>
 
+    <!-- About Us Activity-->
+    <string name="description_about_us_page">If you are interested in reading more about the project that this app is a part of, click the button below.</string>
+    <string name="btn_text_about_us">DESENT Project</string>
+
 </resources>

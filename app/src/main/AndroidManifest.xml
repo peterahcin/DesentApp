@@ -41,6 +41,11 @@
             android:label="History">
         </activity>
 
+        <activity
+            android:name=".activities.AboutUsActivity"
+            android:label="About">
+        </activity>
+
         <meta-data
             android:name="com.google.android.awareness.API_KEY"
             android:value="AIzaSyDNq_wyq79G2phH6ZcdQifzjdvb7iOte_E"/>

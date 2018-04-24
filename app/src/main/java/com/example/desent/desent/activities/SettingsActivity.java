@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.desent.desent.R;
+import com.example.desent.desent.utils.SessionManagement;
 import com.example.desent.desent.utils.Utility;
 import com.soundcloud.android.crop.Crop;
 
@@ -207,12 +208,14 @@ public class SettingsActivity extends AppCompatActivity
             drawer.closeDrawers();
         } else if (id == R.id.nav_settings) {
             drawer.closeDrawer(GravityCompat.START);
-
         } else if (id == R.id.nav_about_us) {
+            startActivity(new Intent(SettingsActivity.this, AboutUsActivity.class));
             drawer.closeDrawer(GravityCompat.START);
-
+        } else if (id == R.id.nav_log_out){
+            SessionManagement session = new SessionManagement(getApplicationContext());
+            session.logoutUser();
+            drawer.closeDrawers();
         }
-
         return true;
     }
 }

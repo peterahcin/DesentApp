@@ -85,7 +85,7 @@
     <string name="nav_history">History</string>
     <string name="nav_settings">Settings</string>
     <string name="nav_about_us">About Us</string>
-    <string name="nav_information">How does this app work?</string>
+    <string name="nav_information">How does t</string>
 
     <!-- Toolbar titles when navigation menu item is selected -->
     <string name="openDrawer">open_drawer</string>
@@ -102,7 +102,7 @@
     <string name="action_settings">Settings</string>
 
     <!-- Preferences -->
-    <string name="pref_title_personal">Personal settings</string>
+    <string name="pref_title_personal">Personal Settings</string>
 
     <string name="pref_personal_name">Name</string>
     <string name="pref_personal_email">Email</string>
@@ -110,21 +110,27 @@
     <string name="pref_personal_gender">Gender</string>
     <string name="pref_personal_age">Age</string>
     <string name="pref_personal_weight">Weight</string>
+    <string name="pref_personal_address">Address</string>
+    <string name="pref_personal_zip_code">Zip code</string>
 
     <string name="pref_personal_dialog_name">Please enter your name</string>
     <string name="pref_personal_dialog_email">Please enter your email</string>
     <string name="pref_personal_dialog_password">Please enter your password</string>
     <string name="pref_personal_dialog_age">Please enter your age</string>
     <string name="pref_personal_dialog_weight">Please enter your weight</string>
+    <string name="pref_personal_dialog_address">Please enter your address</string>
+    <string name="pref_personal_dialog_zip_code">Please enter your zip code</string>
 
     <string name="pref_personal_summary_name">Please enter your name</string>
     <string name="pref_personal_summary_email">Please enter your email</string>
     <string name="pref_personal_summary_password">Please enter your password</string>
     <string name="pref_personal_summary_age">Please enter your age</string>
     <string name="pref_personal_summary_weight">Please enter your weight</string>
+    <string name="pref_personal_summary_address">Please enter your address</string>
+    <string name="pref_personal_summary_zip_code">Please enter your zip code</string>
 
     <!--Primary heating system-->
-    <string name="pref_title_heat">Primary heating system</string>
+    <string name="pref_title_heat">Primary Heating System</string>
 
     <string-array name="pref_heat_type_list">
         <item>Electric (resistance)</item>
@@ -144,7 +150,6 @@
     <string name="pref_key_heat_fuel_cost">pref_key_heat_fuel_cost</string>
     <string name="pref_key_heat_prev_yr">pref_key_heat_prev_yr</string>
 
-
     <string name="pref_dialog_heat_type">Please enter fuel type</string>
     <string name="pref_dialog_heat_efficiency">Please enter system efficiency</string>
     <string name="pref_dialog_heat_fuel_cost">Please enter fuel cost</string>
@@ -162,7 +167,8 @@
 
 
     //Car
-    <string name="pref_title_car">Car settings</string>
+    <string name="pref_title_car">Car Settings</string>
+    <string name="pref_title_car_2">Car Nr. 2 Settings</string>
 
     <string name="pref_car_owner">Car owner</string>
     <string name="pref_car_distance">Yearly driving distance (km)</string>
@@ -222,6 +228,7 @@
 
     <string name="pref_car_advanced_default">Custom values</string>
     <string name="pref_car_title_advanced_settings">Advanced car settings</string>
+    <string name="pref_car_title_advanced_settings2">Advanced car nr. 2 settings</string>
     <string name="pref_car_advanced_fuel_price">Fuel price (pr. litre)</string>
     <string name="pref_car_advanced_Interest_cost">Interest cost (yearly)</string>
     <string name="pref_car_advanced_yearly_fee">Yearly fee (norw.: veiavgift)</string>
@@ -254,6 +261,23 @@
     <string name="pref_car_key_advanced_depreciation_yr4">pref_car_key_advanced_depreciation_yr4</string>
     <string name="pref_car_key_advanced_depreciation_yr5">pref_car_key_advanced_depreciation_yr5</string>
     <string name="pref_car_key_advanced_depreciation_yr6">pref_car_key_advanced_depreciation_yr6</string>
+
+    <string name="pref_car_key_advanced_default2">pref_car_key_advanced_default_2</string>
+    <string name="pref_car_key_advanced_fuel_price2">pref_car_key_advanced_fuel_price_2</string>
+    <string name="pref_car_key_advanced_Interest_cost2">pref_car_key_advanced_Interest_cost_2</string>
+    <string name="pref_car_key_advanced_yearly_fee2">pref_car_key_advanced_yearly_fee_2</string>
+    <string name="pref_car_key_advanced_insurance_cost2">pref_car_key_advanced_insurance_cost_2</string>
+    <string name="pref_car_key_advanced_tire_cost2">pref_car_key_advanced_tire_cost_2</string>
+    <string name="pref_car_key_advanced_wash_accessories_cost2">pref_car_key_advanced_wash_accessories_cost_2</string>
+    <string name="pref_car_key_advanced_service_cost2">pref_car_key_advanced_service_cost_2</string>
+    <string name="pref_car_key_advanced_repair_cost2">pref_car_key_advanced_repair_cost_2</string>
+    <string name="pref_car_key_advanced_fuel_consumption2">pref_car_key_advanced_fuel_consumption_2</string>
+    <string name="pref_car_key_advanced_depreciation_yr1_2">pref_car_key_advanced_depreciation_yr1_2</string>
+    <string name="pref_car_key_advanced_depreciation_yr2_2">pref_car_key_advanced_depreciation_yr2_2</string>
+    <string name="pref_car_key_advanced_depreciation_yr3_2">pref_car_key_advanced_depreciation_yr3_2</string>
+    <string name="pref_car_key_advanced_depreciation_yr4_2">pref_car_key_advanced_depreciation_yr4_2</string>
+    <string name="pref_car_key_advanced_depreciation_yr5_2">pref_car_key_advanced_depreciation_yr5_2</string>
+    <string name="pref_car_key_advanced_depreciation_yr6_2">pref_car_key_advanced_depreciation_yr6_2</string>
 
     <string name="pref_car_summary_advanced_default"></string>
     <string name="pref_car_summary_advanced_fuel_price"></string>

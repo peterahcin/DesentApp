@@ -21,10 +21,6 @@ import com.example.desent.desent.models.VehicleCost;
 
 import java.util.Map;
 
-/**
- * Created by magnust on 23.06.2017.
- */
-
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private final String TAG = "SettingsFragment";
@@ -45,7 +41,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     private String[] unitsEUR =                     {"Cent/kWh"             , "Cent/kWh"  , "EUR/m3" , "EUR/l" , "EUR/kg" };
     private String[] unitsConsumption =             {"kWh"                  , "kWh"       , "m3"     , "l"     , "kg"     };
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +57,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
             listPreferenceCategory.setEntryValues(entryValues);
             listPreferenceCategory.setDefaultValue(entries[0]);
         }
-
 
         // Set up a listener whenever a key changes
         getPreferenceScreen().getSharedPreferences()
@@ -83,7 +77,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
             }
             */
         }else{
-            regnrPref = (EditTextPreference) findPreference("pref_key_car_regnr");
+            regnrPref = (EditTextPreference) findPreference("pref_key_reg_nr");
             preferenceCategory = (PreferenceCategory) findPreference("pref_category_car");
             preferenceCategory.removePreference(regnrPref);
         }
@@ -92,7 +86,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
         */
         Log.i(TAG,"3");
-
     }
 
     private void updatePreferenceSummary() {
@@ -138,7 +131,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
                             currentPref.setSummary(currentValue);
 
                         }
-
                 }
             }
         }
@@ -163,8 +155,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
             updatePreferenceSummary();
             setDefaultSummary(sharedPreferences);
         }
-
-
     }
 
     private int getInt(String str){
@@ -185,6 +175,9 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
                 break;
             case "Wood":
                 res = 4;
+                break;
+            case "Solar panel":
+                res = 5;
                 break;
         }
         return res;

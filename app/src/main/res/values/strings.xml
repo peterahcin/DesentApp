@@ -381,4 +381,9 @@
     <string name="t_c_5">and allow secondary use of the information to e.g., city planning, mapping of citizens\' transportation habits.</string>
     <string name="t_c_6">Since the main functionality of the app is to calculate your emissions through transportation, agreeing to these terms and conditions is necessary for the app to work optimally.</string>
     <string name="t_c_7">I AGREE</string>
+
+    <!-- Login Activity-->
+    <string name="login_welcome">Welcome!</string>
+    <string name="login_new_user">New user? Click button to sign up.</string>
+    <string name="login_already_user">Already a user? Use the fields below to sign in.</string>
 </resources>

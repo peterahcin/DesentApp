@@ -2,12 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="30dp"
     tools:context="com.example.desent.desent.activities.LoginActivity">
 
     <!-- Login progress -->
@@ -32,12 +30,26 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <!--<TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/welcome"
+                android:text="@string/login_welcome"
                 android:textSize="20sp"
-                android:layout_marginBottom="16dp"/>-->
+                android:layout_marginBottom="16dp"/>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:srcCompat="@drawable/earth1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/login_already_user" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -68,32 +80,39 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    tools:ignore="InvalidImeActionId" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/email_sign_in_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:background="@color/green"
                 android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
-                <Button
-                    android:id="@+id/email_sign_in_button"
-                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/action_sign_in"
-                    android:layout_weight="1"/>
+                android:text="@string/action_sign_in"/>
 
-                <Button
-                    android:id="@+id/email_sign_up_button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/action_sign_up"
-                    android:layout_weight="1" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginTop="40dp"
+                android:text="@string/login_new_user" />
 
+            <Button
+                android:id="@+id/email_sign_up_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:background="@color/blue"
+                android:layout_width="120dp"
+                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
+                android:text="@string/action_sign_up" />
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>

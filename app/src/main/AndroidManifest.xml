@@ -46,6 +46,11 @@
             android:label="About">
         </activity>
 
+        <activity
+            android:name=".activities.InformationActivity"
+            android:label="Info">
+        </activity>
+
         <meta-data
             android:name="com.google.android.awareness.API_KEY"
             android:value="AIzaSyDNq_wyq79G2phH6ZcdQifzjdvb7iOte_E"/>

@@ -613,6 +613,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         drawer.closeDrawers();
                         return true;
 
+                    case R.id.nav_information:
+
+                        startActivity(new Intent(MainActivity.this, InformationActivity.class));
+                        drawer.closeDrawers();
+                        return true;
+
                     case R.id.nav_about_us:
 
                         startActivity(new Intent(MainActivity.this, AboutUsActivity.class));

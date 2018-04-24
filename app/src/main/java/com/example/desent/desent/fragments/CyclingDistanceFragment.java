@@ -13,10 +13,6 @@ import com.example.desent.desent.R;
 import com.example.desent.desent.activities.MainActivity;
 import com.example.desent.desent.models.Indicator;
 
-/**
- * Created by celine on 22/06/17.
- */
-
 public class CyclingDistanceFragment extends Fragment {
 
     private SeekBar seekBar;

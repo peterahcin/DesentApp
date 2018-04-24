@@ -106,6 +106,9 @@ public class AboutUsActivity extends AppCompatActivity implements NavigationView
         }*/ else if (id == R.id.nav_about_us) {
             //startActivity(new Intent(AboutUsActivity.this, AboutActivity.class));
             drawer.closeDrawers();
+        } else if (id == R.id.nav_information) {
+            startActivity(new Intent(AboutUsActivity.this, InformationActivity.class));
+            drawer.closeDrawers();
         } else if (id == R.id.nav_log_out){
             SessionManagement session = new SessionManagement(getApplicationContext());
             session.logoutUser();

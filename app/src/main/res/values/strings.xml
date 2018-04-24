@@ -53,7 +53,7 @@
     </string-array>
 
     <string name="register_housing_description">The type of energy you use for heating and the efficiency of your heating system determine 80% of your carbon footprint from energy consumption. The building year and the year of the last renovation of the house, also affect the housing emissions.</string>
-    <string name="register_transportation_description">Your vehicle is major source of greenhouse gas emissions. Cycling or walking instead of driving will save you money, increase your calorie count and reduce your emissions. But first tell us this:</string>
+    <string name="register_transportation_description">Your vehicle is a major source of greenhouse gas emissions. Cycling or walking instead of driving will save you money, give you health benefits, and reduce your carbon footprint.</string>
     <string name="register_activity_description">Finally, to monitor your health gains </string>
 
     <string name="title_activity_welcome">Home Screen</string>
@@ -164,11 +164,11 @@
     <string name="pref_title_car">Car settings</string>
 
     <string name="pref_car_owner">Car owner</string>
-    <string name="pref_car_distance">Driving distance (yearly)</string>
+    <string name="pref_car_distance">Yearly driving distance (km)</string>
     <string name="pref_car_regnr">License plate (Reg. nr.)</string>
     <string name="pref_car_fuel_consumption">Average consumption (litre pr. 10km)</string>
     <string name="pref_car_year_produced">Production year</string>
-    <string name="pref_car_ownership_period">Planned duration of ownership</string>
+    <string name="pref_car_ownership_period">Planned duration of ownership (years)</string>
     <string name="pref_car_price">Car value</string>
     <string name="pref_car_fuel">Fuel type</string>
 
@@ -355,6 +355,8 @@
     <string name="reg_building_year">Building year:</string>
     <string name="reg_year_of_last_renovation">Year of last renovation:</string>
     <string name="reg_solar_panel">Solar panel</string>
+    <string name="reg_registration_nr2">Registration nr.:</string>
+    <string name="reg_own_more_than_one_car">Do you own more than one car?</string>
 
     <string-array name="year_of_renovation_construction_array">
         <item>before 1919</item>

@@ -34,10 +34,6 @@ import com.example.desent.desent.utils.TimeScale;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-/**
- * Created by celine on 02/08/17.
- */
-
 public class AsyncMainSetup extends AsyncTask {
 
     MainActivity activity;

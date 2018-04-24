@@ -35,22 +35,18 @@ import java.io.FileNotFoundException;
 
 import static android.app.Activity.RESULT_OK;
 
-/**
- * Created by celine on 06/07/17.
- */
-
 public class RegisterGeneralFragment extends Fragment {
 
     private final static String CIPHER_KEY = "p2m8j0DgoqjJGxnDYfq70fV92h7sCg0N";
 
     private boolean isProfileValid;
-    private ImageView profilePic;
+    //private ImageView profilePic;
     private EditText nameTextView;
     private EditText emailTextView;
     private EditText passwordTextView;
     private EditText confirmPasswordTextView;
     private SharedPreferences sharedPreferences;
-    private Uri imageUri;
+    //private Uri imageUri;
     private DatabaseHelper myDB;
 
     @Override
@@ -64,17 +60,17 @@ public class RegisterGeneralFragment extends Fragment {
 
         myDB = new DatabaseHelper(getContext());
 
-        profilePic = rootView.findViewById(R.id.profile_pic);
+        //profilePic = rootView.findViewById(R.id.profile_pic);
         nameTextView = rootView.findViewById(R.id.name);
         emailTextView = rootView.findViewById(R.id.email);
         passwordTextView = rootView.findViewById(R.id.password);
         confirmPasswordTextView = rootView.findViewById(R.id.confirm_password);
 
-        profilePic.setOnClickListener(new View.OnClickListener(){ //TODO:request permission
+        /*profilePic.setOnClickListener(new View.OnClickListener(){ //TODO:request permission
             @Override
             public void onClick(View arg0) {
                 pickImage();
-            }});
+            }});*/
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         restorePreferences();
@@ -88,10 +84,9 @@ public class RegisterGeneralFragment extends Fragment {
     public void onDestroyView(){
         super.onDestroyView();
 
-
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString("pref_key_profile_picture", imageUri.toString());
+        //editor.putString("pref_key_profile_picture", imageUri.toString());
         editor.putString("pref_key_personal_name", String.valueOf(nameTextView.getText()));
         editor.putString("pref_key_personal_email", String.valueOf(emailTextView.getText()));
 
@@ -105,14 +100,14 @@ public class RegisterGeneralFragment extends Fragment {
         editor.commit();
     }
 
-    @Override
+    /*@Override
     public void onActivityResult(int requestCode, int resultCode, Intent result) {
         if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
             beginCrop(result.getData());
         } else if (requestCode == Crop.REQUEST_CROP) {
             handleCrop(resultCode, result);
         }
-    }
+    }*/
 
     private void setErrors(){
 
@@ -153,11 +148,11 @@ public class RegisterGeneralFragment extends Fragment {
             public void afterTextChanged(Editable editable) {
 
                 String email = String.valueOf(emailTextView.getText());
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     emailTextView.setError(getString(R.string.error_invalid_email));
-                else
+                } else {
                     emailTextView.setError(null);
-
+                }
             }
         });
 
@@ -208,7 +203,7 @@ public class RegisterGeneralFragment extends Fragment {
 
     }
 
-    private void pickImage() {
+    /*private void pickImage() {
         Crop.pickImage(getContext(), this, Crop.REQUEST_PICK);
     }
 
@@ -232,11 +227,11 @@ public class RegisterGeneralFragment extends Fragment {
         } else if (resultCode == Crop.RESULT_ERROR) {
             Toast.makeText(getActivity(), Crop.getError(result).getMessage(), Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     private void restorePreferences(){
 
-        try {
+        /*try {
             imageUri = Uri.parse(sharedPreferences.getString("pref_key_profile_picture", "android.resource://com.example.desent.desent/drawable/earth"));
         } catch (IllegalArgumentException e) {
             // TODO Auto-generated catch block
@@ -250,7 +245,7 @@ public class RegisterGeneralFragment extends Fragment {
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        }*/
 
         nameTextView.setText(sharedPreferences.getString("pref_key_personal_name", ""), TextView.BufferType.EDITABLE);
         emailTextView.setText(sharedPreferences.getString("pref_key_personal_email", ""), TextView.BufferType.EDITABLE);

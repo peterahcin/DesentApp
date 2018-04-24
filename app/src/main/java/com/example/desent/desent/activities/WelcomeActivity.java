@@ -14,10 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.desent.desent.R;
 
-/**
- * Created by celine on 09/05/17.
- */
-
 public class WelcomeActivity extends Activity {
 
     private ViewPager viewPager;

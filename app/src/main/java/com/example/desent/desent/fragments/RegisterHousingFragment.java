@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.desent.desent.R;
@@ -22,6 +24,9 @@ public class RegisterHousingFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private RadioGroup heatingTypeRadioGroup;
 
+    private Spinner spinnerBuildingYear;
+    private Spinner spinnerRenovationYear;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,6 +37,18 @@ public class RegisterHousingFragment extends Fragment {
                 R.layout.fragment_register_housing, container, false);
 
         heatingTypeRadioGroup = rootView.findViewById(R.id.radio_group_heating);
+
+        spinnerBuildingYear = rootView.findViewById(R.id.spinnerBuilding);
+        ArrayAdapter<CharSequence> adapterBuilding = ArrayAdapter.createFromResource(getContext(), R.array.year_of_renovation_construction_array, android.R.layout.simple_spinner_dropdown_item);
+        adapterBuilding.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerBuildingYear.setAdapter(adapterBuilding);
+        spinnerBuildingYear.setSelection(adapterBuilding.getPosition("1961 - 1970"));
+
+        spinnerRenovationYear = rootView.findViewById(R.id.spinnerRenovation);
+        ArrayAdapter<CharSequence> adapterRenovation = ArrayAdapter.createFromResource(getContext(), R.array.year_of_renovation_construction_array, android.R.layout.simple_spinner_dropdown_item);
+        adapterRenovation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRenovationYear.setAdapter(adapterRenovation);
+        spinnerRenovationYear.setSelection(adapterRenovation.getPosition("2011 - 2015"));
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         restorePreferences();
@@ -46,8 +63,12 @@ public class RegisterHousingFragment extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String heatType = (String) ((RadioButton) getView().findViewById(heatingTypeRadioGroup.getCheckedRadioButtonId())).getText();
+        String b_year = (String) spinnerBuildingYear.getSelectedItem();
+        String r_year = (String) spinnerRenovationYear.getSelectedItem();
 
         editor.putString("pref_key_heat_type", heatType);
+        editor.putString("pref_key_b_year", b_year);
+        editor.putString("pref_key_r_year", r_year);
 
         editor.commit();
 
@@ -58,7 +79,6 @@ public class RegisterHousingFragment extends Fragment {
         String heatType = sharedPreferences.getString("pref_key_heat_type", "Electric (resistance)");
 
         switch(heatType) {
-
             case "Electric (resistance)":
                 heatingTypeRadioGroup.check(R.id.radio_button_electric);
                 break;
@@ -74,8 +94,17 @@ public class RegisterHousingFragment extends Fragment {
             case "Wood":
                 heatingTypeRadioGroup.check(R.id.radio_button_wood);
                 break;
-
+            case "Solar panel":
+                heatingTypeRadioGroup.check(R.id.radio_button_solar_panel);
+                break;
         }
 
+        String b_year = sharedPreferences.getString("pref_key_b_year", "1961 - 1970");
+        ArrayAdapter<CharSequence> adapterBuilding = ArrayAdapter.createFromResource(getContext(), R.array.year_of_renovation_construction_array, android.R.layout.simple_spinner_dropdown_item);
+        spinnerBuildingYear.setSelection(adapterBuilding.getPosition(b_year));
+
+        String r_year = sharedPreferences.getString("pref_key_r_year", "2011 - 2015");
+        ArrayAdapter<CharSequence> adapterRenovation = ArrayAdapter.createFromResource(getContext(), R.array.year_of_renovation_construction_array, android.R.layout.simple_spinner_dropdown_item);
+        spinnerBuildingYear.setSelection(adapterRenovation.getPosition(r_year));
     }
 }

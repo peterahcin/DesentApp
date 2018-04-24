@@ -18,10 +18,6 @@ import java.util.List;
 
 import static com.example.desent.desent.activities.HistoryActivity.LOGG;
 
-/**
- * Created by celine on 04/08/17.
- */
-
 public class AsyncHistorySetup extends AsyncTask {
 
     protected HistoryActivity historyActivity;

@@ -24,10 +24,6 @@ import com.example.desent.desent.utils.Utility;
 
 import java.io.FileNotFoundException;
 
-/**
- * Created by celine on 09/05/17.
- */
-
 public class AboutUsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawer;

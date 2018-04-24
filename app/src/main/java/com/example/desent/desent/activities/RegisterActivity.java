@@ -21,6 +21,7 @@ import com.example.desent.desent.R;
 import com.example.desent.desent.fragments.RegisterActivityFragment;
 import com.example.desent.desent.fragments.RegisterGeneralFragment;
 import com.example.desent.desent.fragments.RegisterHousingFragment;
+import com.example.desent.desent.fragments.RegisterPersonalFragment;
 import com.example.desent.desent.fragments.RegisterTransportationFragment;
 import com.example.desent.desent.models.DatabaseHelper;
 import com.example.desent.desent.utils.SessionManagement;
@@ -30,15 +31,11 @@ import java.util.Vector;
 
 import static android.view.View.GONE;
 
-/**
- * Created by celine on 06/07/17.
- */
-
 public class RegisterActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 6;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -71,10 +68,12 @@ public class RegisterActivity extends FragmentActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         List fragments = new Vector();
-        fragments.add(Fragment.instantiate(this,RegisterGeneralFragment.class.getName()));
-        fragments.add(Fragment.instantiate(this,RegisterHousingFragment.class.getName()));
+        fragments.add(Fragment.instantiate(this, RegisterGeneralFragment.class.getName()));
+        fragments.add(Fragment.instantiate(this, RegisterPersonalFragment.class.getName()));
+        fragments.add(Fragment.instantiate(this, RegisterHousingFragment.class.getName()));
+        fragments.add(Fragment.instantiate(this, RegisterTransportationHabitsFragment.class.getName()));
         fragments.add(Fragment.instantiate(this, RegisterTransportationFragment.class.getName()));
-        fragments.add(Fragment.instantiate(this, RegisterActivityFragment.class.getName()));
+        //fragments.add(Fragment.instantiate(this, RegisterActivityFragment.class.getName()));
         this.mPagerAdapter = new MyPagerAdapter(super.getSupportFragmentManager(), fragments);
 
         // Instantiate a ViewPager and a PagerAdapter.

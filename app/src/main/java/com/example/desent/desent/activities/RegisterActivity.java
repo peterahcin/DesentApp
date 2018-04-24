@@ -23,6 +23,7 @@ import com.example.desent.desent.fragments.RegisterGeneralFragment;
 import com.example.desent.desent.fragments.RegisterHousingFragment;
 import com.example.desent.desent.fragments.RegisterPersonalFragment;
 import com.example.desent.desent.fragments.RegisterTransportationFragment;
+import com.example.desent.desent.fragments.RegisterTransportationHabitsFragment;
 import com.example.desent.desent.models.DatabaseHelper;
 import com.example.desent.desent.utils.SessionManagement;
 

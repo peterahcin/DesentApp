@@ -16,17 +16,19 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:tint="@color/green"
             android:src="@drawable/transportation_habits"/>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textViewHabitsExplanation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="We have many possibilities to get from A to B. The type of transportation you use could have a lot to say on your carbon footprint."
+            android:textSize="14sp"
+            android:text="We have many options to get from A to B. The type of transportation you use could have a large impact on your carbon footprint."
             tools:layout_editor_absoluteX="150dp"
             tools:layout_editor_absoluteY="50dp" />
 
@@ -35,10 +37,11 @@
             android:layout_height="1dp"
             android:layout_gravity="center"
             android:background="?android:attr/listDivider"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:text="What type of transportation do you normally use?"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

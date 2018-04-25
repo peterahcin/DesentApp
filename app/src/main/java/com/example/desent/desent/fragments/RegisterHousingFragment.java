@@ -94,9 +94,6 @@ public class RegisterHousingFragment extends Fragment {
             case "Wood":
                 heatingTypeRadioGroup.check(R.id.radio_button_wood);
                 break;
-            case "Solar panel":
-                heatingTypeRadioGroup.check(R.id.radio_button_solar_panel);
-                break;
         }
 
         String b_year = sharedPreferences.getString("pref_key_b_year", "1961 - 1970");

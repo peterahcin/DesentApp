@@ -176,9 +176,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
             case "Wood":
                 res = 4;
                 break;
-            case "Solar panel":
-                res = 5;
-                break;
         }
         return res;
     }

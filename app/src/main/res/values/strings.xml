@@ -85,7 +85,7 @@
     <string name="nav_history">History</string>
     <string name="nav_settings">Settings</string>
     <string name="nav_about_us">About Us</string>
-    <string name="nav_information">How does t</string>
+    <string name="nav_information">How does this app work?</string>
 
     <!-- Toolbar titles when navigation menu item is selected -->
     <string name="openDrawer">open_drawer</string>
@@ -112,6 +112,9 @@
     <string name="pref_personal_weight">Weight</string>
     <string name="pref_personal_address">Address</string>
     <string name="pref_personal_zip_code">Zip code</string>
+    <string name="pref_personal_city">City</string>
+    <string name="pref_personal_b_year">Building year</string>
+    <string name="pref_personal_r_year">Renovation year</string>
 
     <string name="pref_personal_dialog_name">Please enter your name</string>
     <string name="pref_personal_dialog_email">Please enter your email</string>
@@ -120,6 +123,7 @@
     <string name="pref_personal_dialog_weight">Please enter your weight</string>
     <string name="pref_personal_dialog_address">Please enter your address</string>
     <string name="pref_personal_dialog_zip_code">Please enter your zip code</string>
+    <string name="pref_personal_dialog_city">Please enter your city</string>
 
     <string name="pref_personal_summary_name">Please enter your name</string>
     <string name="pref_personal_summary_email">Please enter your email</string>
@@ -128,6 +132,9 @@
     <string name="pref_personal_summary_weight">Please enter your weight</string>
     <string name="pref_personal_summary_address">Please enter your address</string>
     <string name="pref_personal_summary_zip_code">Please enter your zip code</string>
+    <string name="pref_personal_summary_city">Please enter your city</string>
+    <string name="pref_personal_summary_b_year">Please enter the building year of where you live</string>
+    <string name="pref_personal_summary_r_year">Please enter the renovation year of where you live</string>
 
     <!--Primary heating system-->
     <string name="pref_title_heat">Primary Heating System</string>
@@ -164,7 +171,8 @@
     <string name="pref_default_heat_efficiency">Please enter efficiency</string>
     <string name="pref_default_heat_fuel_cost">Please enter fuel cost</string>
     <string name="pref_default_heat_prev_yr">Please enter consumption for previous year</string>
-
+    <string name="pref_default_b_year">"1961 - 1970"</string>
+    <string name="pref_default_r_year">"2011 - 2015"</string>
 
     //Car
     <string name="pref_title_car">Car Settings</string>
@@ -320,8 +328,6 @@
     <string name="pref_car_default_advanced_depreciation_yr6" format="float">0.10</string>
 
     <string name="pref_car_advanced_"></string>
-
-
 
     <!-- Strings related to login -->
 

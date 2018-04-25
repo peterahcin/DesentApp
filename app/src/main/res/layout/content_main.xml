@@ -92,6 +92,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <TextView
+                android:id="@+id/tvElectricVehicle"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:paddingBottom="6dp"
+                android:text="See how much you can save by changing to an electric car:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <fragment android:name="com.example.desent.desent.fragments.WalkingDistanceFragment"
                 android:id="@+id/walking_distance"
                 android:layout_width="match_parent"
@@ -170,15 +180,16 @@
                 android:id="@+id/information_daily_savings"
                 android:orientation="horizontal"
                 android:layout_width="368dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
+                android:paddingTop="4dp"
                 android:gravity="center_vertical"
                 android:visibility="gone">
 
                 <ImageView
-                    android:layout_height="24dp"
-                    android:layout_width="24dp"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
                     android:tint="@color/dark_grey"
                     android:src="@drawable/ic_piggy_bank"/>
 
@@ -187,7 +198,7 @@
                     android:paddingLeft="16dp"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:text="@string/information_savings"/>
 
             </LinearLayout>
@@ -196,15 +207,16 @@
                 android:id="@+id/information_days_left_solar_panel"
                 android:orientation="horizontal"
                 android:layout_width="368dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:gravity="center_vertical"
                 android:visibility="gone">
 
                 <ImageView
-                    android:layout_height="24dp"
-                    android:layout_width="24dp"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
                     android:tint="@color/dark_grey"
                     android:src="@drawable/ic_solar_installation"/>
 
@@ -213,7 +225,7 @@
                     android:paddingLeft="16dp"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:text="@string/information_days_left_solar_panel"/>
 
             </LinearLayout>
@@ -222,15 +234,16 @@
                 android:id="@+id/information_own_energy"
                 android:orientation="horizontal"
                 android:layout_width="368dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
+                android:paddingTop="4dp"
                 android:gravity="center_vertical"
                 android:visibility="gone">
 
                 <ImageView
-                    android:layout_height="24dp"
-                    android:layout_width="24dp"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
                     android:tint="@color/dark_grey"
                     android:src="@drawable/ic_wb_incandescent_black_24dp"/>
 
@@ -239,13 +252,12 @@
                     android:paddingLeft="16dp"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:text="@string/information_own_energy"/>
 
             </LinearLayout>
 
         </LinearLayout>
-
 
     </ScrollView>
 

@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         sessionManagement = new SessionManagement(getApplicationContext());
-        Toast.makeText(getApplicationContext(), "User login status: " + sessionManagement.isLoggedIn(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "User login status: " + sessionManagement.isLoggedIn(), Toast.LENGTH_LONG).show();
         sessionManagement.checkLogin();
 
         //Accelerometer

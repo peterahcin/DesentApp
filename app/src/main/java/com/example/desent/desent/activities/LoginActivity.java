@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
 
         sessionManagement = new SessionManagement(getApplicationContext());
-        Toast.makeText(getApplicationContext(), "User login status: " + sessionManagement.isLoggedIn(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "User login status: " + sessionManagement.isLoggedIn(), Toast.LENGTH_LONG).show();
         if (sessionManagement.isLoggedIn()){
             finish();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));

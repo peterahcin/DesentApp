@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private WalkingDistanceFragment walkingDistanceFragment;
     private CyclingDistanceFragment cyclingDistanceFragment;
     private SolarPanelSizeFragment solarPanelSizeFragment;
+    private TextView tvElectricVehicle;
 
     //Indicators
     protected ArrayList<Indicator> indicators = new ArrayList<>();
@@ -228,6 +229,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Drawer "hamburger"
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
+        tvElectricVehicle = (TextView) findViewById(R.id.tvElectricVehicle);
+
         //Navigation drawer
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -344,6 +347,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 informationSeparator.setVisibility(GONE);
                                 informationOwnEnergy.setVisibility(GONE);
 
+                                tvElectricVehicle.setVisibility(View.GONE);
+
                                 ft.hide(walkingDistanceFragment);
                                 ft.hide(cyclingDistanceFragment);
                                 ft.hide(solarPanelSizeFragment);
@@ -368,6 +373,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 informationDaysLeftSolarPanel.setVisibility(View.GONE);
                                 informationSeparator.setVisibility(VISIBLE);
                                 informationOwnEnergy.setVisibility(VISIBLE);
+
+                                tvElectricVehicle.setVisibility(View.GONE);
 
                                 ft.hide(walkingDistanceFragment);
                                 ft.hide(cyclingDistanceFragment);
@@ -398,6 +405,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     informationDaysLeftSolarPanel.setVisibility(View.GONE);
                                     informationSeparator.setVisibility(GONE);
                                 }
+
+                                tvElectricVehicle.setVisibility(View.GONE);
 
                                 ft.show(walkingDistanceFragment);
                                 ft.hide(cyclingDistanceFragment);
@@ -431,6 +440,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     informationSeparator.setVisibility(GONE);
                                 }
 
+                                tvElectricVehicle.setVisibility(View.GONE);
+
                                 ft.hide(walkingDistanceFragment);
                                 ft.show(cyclingDistanceFragment);
                                 ft.hide(solarPanelSizeFragment);
@@ -455,6 +466,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 informationDaysLeftSolarPanel.setVisibility(View.VISIBLE);
                                 informationOwnEnergy.setVisibility(GONE);
                                 informationSeparator.setVisibility(VISIBLE);
+
+                                tvElectricVehicle.setVisibility(View.VISIBLE);
 
                                 ft.hide(walkingDistanceFragment);
                                 ft.hide(cyclingDistanceFragment);

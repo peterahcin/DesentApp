@@ -1,5 +1,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="pref_screen_main">
+
     <PreferenceCategory
         android:title="@string/pref_title_personal">
         <EditTextPreference
@@ -46,12 +47,34 @@
             android:key="pref_key_personal_zip_code"
             android:summary="@string/pref_personal_summary_zip_code"
             android:title="@string/pref_personal_zip_code"/>
+        <EditTextPreference
+            android:dialogTitle="@string/pref_personal_dialog_city"
+            android:key="pref_key_personal_city"
+            android:summary="@string/pref_personal_summary_city"
+            android:title="@string/pref_personal_city"/>
+        <ListPreference
+            android:entries="@array/year_of_renovation_construction_array"
+            android:entryValues="@array/year_of_renovation_construction_array"
+            android:key="pref_key_b_year"
+            android:summary="@string/pref_personal_summary_b_year"
+            android:title="@string/pref_personal_b_year"
+            android:defaultValue="@string/pref_default_b_year"/>
+        <ListPreference
+            android:entries="@array/year_of_renovation_construction_array"
+            android:entryValues="@array/year_of_renovation_construction_array"
+            android:key="pref_key_r_year"
+            android:summary="@string/pref_personal_summary_r_year"
+            android:title="@string/pref_personal_r_year"
+            android:defaultValue="@string/pref_default_r_year" />
 
     </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/pref_title_heat">
 
         <ListPreference
             android:key="@string/pref_key_heat_type"
+            android:entries="@array/pref_heat_type_list"
+            android:entryValues="@array/pref_heat_type_list"
             android:title="@string/pref_heat_type"
             android:summary="@string/pref_summary_heat_type"
             android:defaultValue="@string/pref_default_heat_fuel_type"/>
@@ -77,6 +100,7 @@
             android:defaultValue="@string/pref_default_heat_prev_yr"
             android:inputType="numberDecimal"/>
     </PreferenceCategory>
+
     <PreferenceCategory
         android:title="@string/pref_title_car"
         android:key="pref_category_car">
@@ -119,9 +143,11 @@
             android:summary="@string/pref_car_size_summary"
             android:title="@string/pref_title_car_size"
             android:dependency="pref_key_car_owner"/>
+
         <PreferenceScreen
             android:title="@string/pref_car_title_advanced_settings"
             android:dependency="pref_key_car_owner">
+
             <PreferenceCategory
                 android:title="@string/pref_car_title_advanced_settings">
                 <CheckBoxPreference
@@ -255,6 +281,7 @@
     <PreferenceCategory
         android:title="@string/pref_title_car_2"
         android:key="pref_category_car_2">
+
         <CheckBoxPreference
             android:key="pref_key_car_owner_2"
             android:title="@string/pref_car_owner"
